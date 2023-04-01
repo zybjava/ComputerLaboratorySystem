@@ -2,13 +2,14 @@
 	--body-background: #d9f6ff;
 	--body-text-color: #0b002c;
 
-	--header-background: #0048ff;
+	--header-background: rgba(170, 194, 255, 0.5);
+	--header-text-color: #102aaa;
 
 	--header-nav-li-hover-background: #08002c;
 	--header-nav-li-hover-text-color: #ffffff;
 
-	--main-background: rgba(217, 214, 255, 0.75);
-	--scroll-background: rgba(51, 71, 136, 0.75);
+	--main-background: rgba(217, 214, 255, 0.5);
+	--scroll-background: rgba(51, 71, 136, 0.5);
 
 	--border-color-input: #235154;
 }
@@ -47,6 +48,7 @@ header{
 header .title{
 	display: flex;
 	flex-direction: column;
+	color: var(--header-text-color);
 }
 
 header nav ul{
@@ -140,4 +142,13 @@ header nav ul li:hover{
 	width: 100%;
 	box-sizing: border-box;
 	justify-content: center;
+}
+
+.container section{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.container section ul{
+	overflow-y: scroll;
 }

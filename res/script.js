@@ -13,5 +13,5 @@ class ${
 
 window.onload = () => {
 	let home = new $("#home")
-	let container = new (".container")
+	let container = new $(".container")
 }
