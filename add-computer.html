@@ -38,19 +38,23 @@
 				</ul>
 			</section>
 			<main>
-				<form id="add-new-device">
+				<form id="add-new-device" method="POST" action="backend/add-pc.php">
 					<h1>Computer Information</h1>
 					<span>
 						<label for="roomname">Room name:</label>
-						<select id="roomname">
+						<select id="roomname" name="roomname">
 							<option value="cl1">Computer Laboratory 1</option>
 							<option value="cl2">Computer Laboratory 2</option>
 							<option value="cl3">Computer Laboratory 3</option>
 						</select>
 					</span>
 					<span>
+						<label for="com-id">Computer ID:</label>
+						<input type="text" id="com-id" name="com-id" placeholder="PC-00">
+					</span>
+					<span>
 						<label for="device-id">Device ID:</label>
-						<input type="text" id="device-id" placeholder="00000000-89ABCDEF-01234567-89ABCDEF">
+						<input type="text" id="device-id" name="device-id" placeholder="00000000-89ABCDEF-01234567-89ABCDEF">
 					</span>
 					<input type="submit" id="send" value="Submit">
 				</form>
@@ -58,4 +62,16 @@
 		</div>
 	</body>
 	<script src="res/script.js"></script>
+	<script>
+		window.onload = async () => {
+			// On Add PC
+			let pcs = await fetch("/comlab-management-system/backend/get_pc_lists.php").then(r => {
+				return r.json()
+			}).catch(e => {
+				console.log(e)
+				return null
+			})
+			alert(pcs)
+		}
+	</script>
 </html>
