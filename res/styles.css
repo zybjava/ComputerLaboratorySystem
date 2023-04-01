@@ -9,6 +9,8 @@
 
 	--main-background: rgba(217, 214, 255, 0.75);
 	--scroll-background: rgba(51, 71, 136, 0.75);
+
+	--border-color-input: #235154;
 }
 *{
 	margin: 0;
@@ -102,4 +104,40 @@ header nav ul li:hover{
 	background-color: var(--main-background);
 	width: 80%;
 	align-self: flex-end;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-content: center;
+}
+
+.container main #add-new-device * {
+	align-self: center;
+	display: flex;
+	flex-direction: row;
+}
+.container main #add-new-device span{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 0.25em 0;
+}
+
+.container main #add-new-device span label{
+	font-weight: bold;
+}
+
+.container main #add-new-device span input, .container main #add-new-device span select, .container main #add-new-device input[type='submit']{
+	background-color: transparent;
+	border: 1px var(--border-color-input) solid;
+	padding: 0 0.25em;
+	border-radius: 0.25em;
+	font-family: 'Times New Roman', Times, serif;
+	width: 60%;
+	box-sizing: border-box;
+}
+
+.container main #add-new-device input[type='submit']{
+	width: 100%;
+	box-sizing: border-box;
+	justify-content: center;
 }
