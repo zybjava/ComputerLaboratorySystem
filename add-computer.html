@@ -65,13 +65,13 @@
 	<script>
 		window.onload = async () => {
 			// On Add PC
-			let pcs = await fetch("/comlab-management-system/backend/get_pc_lists.php").then(r => {
+			let pcs = JSON.parse(await fetch("/comlab-management-system/backend/get_pc_lists.php").then(r => {
+				//console.log(JSON.stringify(r.json()))
 				return r.json()
 			}).catch(e => {
 				console.log(e)
 				return null
-			})
-			alert(pcs)
+			}))
 		}
 	</script>
 </html>

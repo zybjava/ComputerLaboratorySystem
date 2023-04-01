@@ -6,7 +6,7 @@
 	$sql = mysqli_query($conn, "SELECT * FROM computers");
 	$total = mysqli_num_rows($sql);
 	$cl1 = (object)[];
-	echo "{ 'data': [";
+	$res = '{"data": [';
 	for($i = 1; $i <= $total; $i++){
 		$q = mysqli_query($conn, "SELECT * FROM computers WHERE ID = $i");
 		$row = mysqli_fetch_array($q);
@@ -14,10 +14,11 @@
 		$comID = $sys->decrypt($row['computer_id']);
 		$devID = $sys->decrypt($row['device_id']);
 
-		echo "{'roomname': '" . $room . "', 'computerID': '" . $comID . "', 'deviceID': '" . $devID . "'}";
+		$res .= '{"roomname": "' . $room . '", "computerID": "' . $comID . '", "deviceID": "' . $devID . '"}';
 		if($i < $total){
-			echo ",";
+			$res .= ", ";
 		}
 	}
-	echo "]}";// ", 'cl2': " . json_encode($cl2) . ", 'cl3': " . json_encode($cl3) . "}";
+	$res .= "]}";// ", 'cl2': " . json_encode($cl2) . ", 'cl3': " . json_encode($cl3) . "}";
+	echo str_replace("\u0000", "", json_encode($res));
 ?>
