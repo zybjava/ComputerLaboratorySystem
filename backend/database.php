@@ -2,6 +2,13 @@
 	$HOST = "localhost";
 	$USER = "root";
 	$PASS = "";
-	$DATABASE = "";
+	$DATABASE = "comlabsystem";
 	$conn = mysqli_connect($HOST, $USER, $PASS, $DATABASE);
+
+	function encrypt($text){
+
+	}
+	function decrypt($text){
+
+	}
 ?>
