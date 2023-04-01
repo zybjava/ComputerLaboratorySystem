@@ -1,12 +1,12 @@
 <?php
-	class system{
+	class solar_system{
 		private $binary_array = array("f", "g", "h", "i", "e", "d", "c", "b", "a");
 		private $binaries = array(128, 64, 32, 16, 8, 4, 2, 1);
-		private $text;
-		function __construct($text){
-			$this->text = $text;
+		function __construct(){
+			$this->binary_array = array("f", "g", "h", "i", "e", "d", "c", "b", "a");
+			$this->binaries = array(128, 64, 32, 16, 8, 4, 2, 1);
 		}
-		function to_binary($char){
+		private function to_binary($char) : string{
 			$text = ord($char);
 			$result = "";
 			$m = 1;
@@ -23,7 +23,7 @@
 			}
 			return $result;
 		}
-		function from_binary($bins){
+		private function from_binary($bins) : string{
 			$bin = explode(" ", $bins);
 			$res = 0;
 			for($i = 0; $i < count($bin); $i++){
@@ -36,10 +36,10 @@
 			}
 			return chr($res);
 		}
-		function encrypt_bin(){
+		public function encrypt($text){
 			$bin = "";
-			for($i = 0; $i < strlen($this->text); $i++){
-				$bin .= $this->to_binary($this->text[$i]) . (($i < strlen($this->text) - 1) ? " " : "");
+			for($i = 0; $i < strlen($text); $i++){
+				$bin .= $this->to_binary($text[$i]) . (($i < strlen($text) - 1) ? " " : "");
 			}
 			$binary = explode(" ", $bin);
 			$bin = "";
@@ -50,11 +50,11 @@
 						$bin .= $this->binary_array[$j];
 					}
 				}
-				$bin .= (($i < strlen($this->text) - 1) ? "j" : "");
+				$bin .= (($i < strlen($text) - 1) ? "j" : "");
 			}
 			return $bin;
 		}
-		function decrypt_bin($encrypted){
+		public function decrypt($encrypted) : string{
 			$text = explode("j", $encrypted);
 			$bin = "";
 			for($i = 0; $i < count($text); $i++){
@@ -66,7 +66,7 @@
 						$bin .= "0";
 					}
 				}
-				$bin .= (($i < strlen($this->text) - 1) ? " " : "");
+				$bin .= (($i < count($this->binary_array) - 1) ? " " : "");
 			}
 			$bins = explode(" ", $bin);
 			$bin = "";

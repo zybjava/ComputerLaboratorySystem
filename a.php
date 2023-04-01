@@ -1,6 +1,6 @@
 <?php
 	include("backend/system.php");
-	$a = new system("Hello");
-	echo $a->encrypt_bin() . "<br><br>";
-	echo $a->decrypt_bin("gejghdbjghedjghedjghedcb");
+	$a = new solar_system();
+	echo $a->encrypt("Hello") . "<br><br>";
+	echo $a->decrypt("gejghdbjghedjghedjghedcb");
 ?>
