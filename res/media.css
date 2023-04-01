@@ -5,4 +5,7 @@
 	.container main{
 		width: 100%;
 	}
+	header .base-title i{
+		display: block;
+	}
 }

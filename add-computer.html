@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+		<link rel="stylesheet" href="res/styles.css">
+		<link rel="stylesheet" href="res/media.css">
+	</head>
+	<body>
+		<header>
+			<div class="base-title">
+				<i class="fa-solid fa-bars fa-2xl"></i>
+				<div class="title">
+					<h3>Dalubhasaan ng Lungsod ng Lucena</h3>
+					<h5>Computer Laboratory Management System</h5>
+				</div>
+			</div>
+			<nav>
+				<ul>
+					<li id="home">Welcome</li>
+					<li>Welcome</li>
+					<li>Welcome</li>
+				</ul>
+			</nav>
+		</header>
+		<div class="container">
+			<section>
+				<ul id="informations-cl1">
+					<h3 id="cl1-title" style="text-align: center;">There is no device recorded in Computer Laboratory 1</h3>
+				</ul>
+				<ul id="informations-cl2">
+					<h3 id="cl2-title" style="text-align: center;">There is no device recorded in Computer Laboratory 2</h3>
+				</ul>
+				<ul id="informations-cl3">
+					<h3 id="cl3-title" style="text-align: center;">There is no device recorded in Computer Laboratory 2</h3>
+				</ul>
+			</section>
+			<main>
+				<form id="add-new-device">
+					<h1>Computer Information</h1>
+					<span>
+						<label for="roomname">Room name:</label>
+						<select id="roomname">
+							<option value="cl1">Computer Laboratory 1</option>
+							<option value="cl2">Computer Laboratory 2</option>
+							<option value="cl3">Computer Laboratory 3</option>
+						</select>
+					</span>
+					<span>
+						<label for="device-id">Device ID:</label>
+						<input type="text" id="device-id" placeholder="00000000-89ABCDEF-01234567-89ABCDEF">
+					</span>
+					<input type="submit" id="send" value="Submit">
+				</form>
+			</main>
+		</div>
+	</body>
+	<script src="res/script.js"></script>
+</html>

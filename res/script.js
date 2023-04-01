@@ -12,6 +12,6 @@ class ${
 }
 
 window.onload = () => {
-	let home = new $("#home")
-	let container = new $(".container")
+	// Login Registration Panel
+	
 }

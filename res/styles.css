@@ -1,3 +1,5 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
 :root{
 	--body-background: #d9f6ff;
 	--body-text-color: #0b002c;
@@ -23,7 +25,6 @@
 	user-select: none;
 }
 body{
-	background-color: var(--body-background);
 	background-image: url('images/background.png');
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -44,11 +45,24 @@ header{
 	position: sticky;
 	top: 0;
 }
+header .base-title{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
 
-header .title{
+header .base-title .title{
 	display: flex;
 	flex-direction: column;
 	color: var(--header-text-color);
+}
+
+header .base-title i{
+	color: var(--header-text-color);
+	padding: 0.5em;
+	margin: 0.25em;
+	border-radius: 0.25em;
+	display: none;
 }
 
 header nav ul{
@@ -63,7 +77,7 @@ header nav ul li{
 	border-radius: 0.5em;
 }
 
-header nav ul li:hover{
+header nav ul li:hover, header .base-title i:hover{
 	background-color: var(--header-nav-li-hover-background);
 	color: var(--header-nav-li-hover-text-color);
 }
@@ -112,23 +126,23 @@ header nav ul li:hover{
 	align-content: center;
 }
 
-.container main #add-new-device * {
+.container main form *{
 	align-self: center;
 	display: flex;
 	flex-direction: row;
 }
-.container main #add-new-device span{
+.container main form span{
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	margin: 0.25em 0;
 }
 
-.container main #add-new-device span label{
+.container main form span label{
 	font-weight: bold;
 }
 
-.container main #add-new-device span input, .container main #add-new-device span select, .container main #add-new-device input[type='submit']{
+.container main form span input, .container main form span select, .container main form input[type='submit']{
 	background-color: transparent;
 	border: 1px var(--border-color-input) solid;
 	padding: 0 0.25em;
@@ -138,7 +152,7 @@ header nav ul li:hover{
 	box-sizing: border-box;
 }
 
-.container main #add-new-device input[type='submit']{
+.container main form input[type='submit']{
 	width: 100%;
 	box-sizing: border-box;
 	justify-content: center;
