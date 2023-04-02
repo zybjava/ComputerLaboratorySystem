@@ -72,6 +72,28 @@
 				console.log(e)
 				return null
 			}))
+			let cl1 = "<li>"
+			let cl2 = "<li>"
+			let cl3 = "<li>"
+			for(let i = 0; i < pcs.data.length; i++){
+				switch(pcs.data[i].roomname){
+					case "cl1":
+						cl1 += pcs.data[i].deviceID + "</li><li>"
+					break
+					case "cl2":
+						cl2 += pcs.data[i].deviceID + "</li><li>"
+					break
+					case "cl3":
+						cl3 += pcs.data[i].deviceID + "</li><li>"
+					break
+				}
+			}
+			cl1 += "</li>"
+			cl2 += "</li>"
+			cl3 += "</li>"
+			$("#informations-cl1").innerHTML = cl1
+			$("#informations-cl2").innerHTML = cl2
+			$("#informations-cl3").innerHTML = cl3
 		}
 	</script>
 </html>
