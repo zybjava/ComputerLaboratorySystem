@@ -8,4 +8,7 @@
 	header .base-title i{
 		display: block;
 	}
+	header .base-title .logo{
+		display: none;
+	}
 }

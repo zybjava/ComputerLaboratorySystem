@@ -10,7 +10,7 @@
 		
 		if(check_pc($conn, $devID)){
 			if(mysqli_query($conn, "INSERT INTO computers (computer_id, device_id, room) VALUES ('$comID', '$devID', '$room')")){
-				echo "Done";
+				header("Location: ../add-computer.html	");
 			}else{
 				echo mysqli_error($conn);
 			}

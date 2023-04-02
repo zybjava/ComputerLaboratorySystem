@@ -57,6 +57,13 @@ header .base-title .title{
 	color: var(--header-text-color);
 }
 
+header .base-title .logo{
+	height: 3em;
+	box-sizing: border-box;
+	border-radius: 50%;
+	margin: 0.25em;
+}
+
 header .base-title i{
 	color: var(--header-text-color);
 	padding: 0.5em;
