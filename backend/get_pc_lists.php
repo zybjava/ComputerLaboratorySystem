@@ -20,5 +20,5 @@
 		}
 	}
 	$res .= "]}";// ", 'cl2': " . json_encode($cl2) . ", 'cl3': " . json_encode($cl3) . "}";
-	echo str_replace("\u0000", "", json_encode($res));
+	echo json_decode(str_replace("\u0000", "", json_encode($res)));
 ?>
