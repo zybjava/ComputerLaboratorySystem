@@ -22,7 +22,6 @@ $("#register").onclick = () => {
 }
 
 $("#log-reg-submit").onclick = async () => {
-	alert("hi")
 	let userID = $("#username").value
 	let password = $("#password").value
 	let formData = new FormData()
