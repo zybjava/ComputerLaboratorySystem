@@ -47,11 +47,25 @@
 							<option value="cl1">Computer Laboratory 1</option>
 							<option value="cl2">Computer Laboratory 2</option>
 							<option value="cl3">Computer Laboratory 3</option>
+							<option value="registrar">Registrar's Office</option>
+							<option value="osas">Office of the Student Affairs and Services</option>
+							<option value="bsit">Information Technology Department Office</option>
+							<option value="bsais">Accounting Information System Department Office</option>
+							<option value="bse">Entrepreneurship Department Office</option>
+							<option value="bspa">Public Administrator Department Office</option>
+							<option value="bsba">Business Administrator Department Office</option>
+							<option value="bssw">Social Works Department Office</option>
+							<option value="abels">Arts in English Language Studies</option>
+							<option value="btvte">Technical-Vocational Teacher Education</option>
 						</select>
 					</span>
 					<span>
-						<label for="com-id">Computer ID:</label>
-						<input type="text" id="com-id" name="com-id" placeholder="PC-00">
+						<label for="reciever">Recieve by:</label>
+						<input type="text" id="reciever" name="reciever">
+					</span>
+					<span>
+						<label for="model">Model:</label>
+						<input type="text" id="model" name="model">
 					</span>
 					<span>
 						<label for="device-id">Device ID:</label>

@@ -165,6 +165,10 @@ header nav ul li:hover, header .base-title i:hover{
 	justify-content: center;
 }
 
+.container main .form .form-hide{
+	display: none ;
+}
+
 .container section{
 	display: flex;
 	flex-direction: column;
