@@ -1,22 +1,23 @@
 <?php
 	include("database.php");
 	$std = new solar_system();
+	//echo $_POST['userID'];
 	if(!isset($_POST['userID']) || !isset($_POST['password'])){
-		echo "Error";
+		echo json_decode(json_encode('{"status": 400, "message": "Cant find"}'));
 	}else{
 		$userID = $std->encrypt($_POST['userID']);
 		$password = sha1($_POST['password']);
 
-		if(user($conn, $studentID, $password)){
+		if(user($conn, $userID, $password)){
 			// Existed
 			setcookie('dll_user', $userID, time() + (86400 * 7));
-			echo "{'status': 300, 'redirect': 'add-computer.html'}";
+			echo json_decode(json_encode('{"status": 300, "redirect": "add-computer.html"}'));
 		}else{
 			// Not exists
-			echo "{'status': 400, 'message': 'User ID and password not match'}";
+			echo json_decode(json_encode('{"status": 400, "message": "User ID and password not match"}'));
 		}
 	}
-	function user($conn, $studentID, $password) : bool{
-		return mysqli_num_rows(mysqli_query($conn, "SELECT * FROM users WHERE studentID = '$studentID' AND password = '$password'")) > 0;
+	function user($conn, $userID, $password) : bool{
+		return mysqli_num_rows(mysqli_query($conn, "SELECT * FROM users WHERE userID = '$userID' AND password = '$password'")) > 0;
 	}
 ?>

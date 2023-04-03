@@ -16,15 +16,15 @@
 			if($password == $password2){
 				$sql = mysqli_query($conn, "INSERT INTO users (userID, firstname, middlename, lastname, office, password) VALUES ('$userID', '$firstname', '$middlename', '$lastname', '$office', '$password')");
 				if($sql){
-					echo "{'status': 300, 'redirect': 'add-computer.html'}";
+					echo json_encode("{'status': 300, 'redirect': 'add-computer.html'}");
 				}else{
 					echo mysqli_error($conn);
 				}
 			}else{
-				echo "{'status': 400, 'message': 'Password not match'}";
+				echo json_encode("{'status': 400, 'message': 'Password not match'}");
 			}
 		}else{
-			echo "{'status': 400, 'message': 'User ID is already existed in the server'}";
+			echo json_encode("{'status': 400, 'message': 'User ID is already existed in the server'}");
 		}
 	}
 	function user($conn, $userID, $password) : bool{

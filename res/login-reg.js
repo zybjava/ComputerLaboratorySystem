@@ -1,6 +1,8 @@
+let data = "backend/login.php"
+
 $("#login").onclick = () => {
 	$("#log-reg-title").textContent = "Login Panel"
-	$("#log-reg-panel").action = "backend/login.php"
+	data = "backend/login.php"
 	$("#log-reg-panel").innerHTML = `
 		<span>
 			<label for="username">User ID: </label>
@@ -14,7 +16,7 @@ $("#login").onclick = () => {
 }
 $("#register").onclick = () => {
 	$("#log-reg-title").textContent = "Registration Panel"
-	$("#log-reg-panel").action = "backend/registration.php"
+	data = "backend/registration.php"
 	$("#log-reg-panel").innerHTML = `
 		<span>
 			<label for="username">User ID: </label>
@@ -57,4 +59,34 @@ $("#register").onclick = () => {
 			<input type="password" id="password2" name="password2">
 		</span>
 		<input type="submit" id="log-reg-submit" value="Register">`
+}
+
+$("#log-reg-submit").onclick = async () => {
+	let userID = $("#username").value
+	let office = ""
+	let firstname = ""
+	let middlename = ""
+	let lastname = ""
+	let password = $("#password").value
+	let password2 = ""
+	let formData = new FormData()
+	if(data == "backend/registration.php"){
+		formData.append('office', $("#office").value)
+		formData.append('firstname', $("#firstname").value)
+		formData.append('middlename', $("#middlename").value)
+		formData.append('lastname', $("#lastname").value)
+		formData.append('password2', $("#password2").value)
+	}
+	formData.append('userID', userID)
+	formData.append('password', password)
+	let result = await fetch(data, {
+		method: "POST",
+		body: formData
+	}).then(r => {
+		return r.text()
+	}).catch(e => {
+		console.error(e)
+		return null
+	})
+	console.log(result)
 }
