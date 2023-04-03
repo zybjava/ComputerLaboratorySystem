@@ -35,4 +35,15 @@ window.onload = async () => {
 	$("#informations-cl1").innerHTML = "<h5 style='text-align: center'>" + ((cl1_n <=0 ) ? "There is no device recorded in Computer Laboratory 1" : "Here are the lists of computers in Computer Laboratory 1") + "</h5>" + cl1
 	$("#informations-cl2").innerHTML = "<h5 style='text-align: center'>" + ((cl2_n <=0 ) ? "There is no device recorded in Computer Laboratory 2" : "Here are the lists of computers in Computer Laboratory 2") + "</h5>" + cl2
 	$("#informations-cl3").innerHTML = "<h5 style='text-align: center'>" + ((cl3_n <=0 ) ? "There is no device recorded in Computer Laboratory 3" : "Here are the lists of computers in Computer Laboratory 3") + "</h5>" + cl3
+
+	// Cookies
+	let cookies = new biskwit("dll_user")
+	if(!cookies.issetCookie()){
+		location.href = "index"
+	}
+	$("#logout").onclick = () => {
+		alert("h")
+		cookies.clearCookie()
+		location.href = "index"
+	}
 }

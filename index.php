@@ -77,5 +77,6 @@
 		</div>
 	</body>
 	<script src="res/script.js"></script>
+	<script src="res/biskwit.js"></script>
 	<script src="res/login-reg.js"></script>
 </html>

@@ -1,3 +1,4 @@
+//import { biskwit } from "./biskwit"
 let data = "backend/login.php"
 
 $("#login").onclick = () => {
@@ -47,6 +48,15 @@ $("#log-reg-submit").onclick = async () => {
 	if(result.status == 400){
 		$("#log-reg-title").textContent = result.message
 	}else if(result.status == 300){
+		let cookies = new biskwit("dll_user")
+		cookies.setCookie(userID)
 		location.href = result.redirect
+	}
+}
+
+window.onload = () => {
+	let cookies = new biskwit("dll_user")
+	if(cookies.issetCookie()){
+		location.href = "add-computer"
 	}
 }

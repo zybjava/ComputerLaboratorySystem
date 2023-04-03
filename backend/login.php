@@ -11,7 +11,7 @@
 		if(user($conn, $userID, $password)){
 			// Existed
 			setcookie('dll_user', $userID, time() + (86400 * 7));
-			echo json_decode(json_encode('{"status": 300, "redirect": "add-computer.html"}'));
+			echo json_decode(json_encode('{"status": 300, "redirect": "add-computer"}'));
 		}else{
 			// Not exists
 			echo json_decode(json_encode('{"status": 400, "message": "User ID and password not match"}'));

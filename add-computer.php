@@ -22,7 +22,7 @@
 				<ul>
 					<li id="home">Welcome</li>
 					<li>Welcome</li>
-					<li>Welcome</li>
+					<li id="logout">Logout</li>
 				</ul>
 			</nav>
 		</header>
@@ -77,5 +77,6 @@
 		</div>
 	</body>
 	<script src="res/script.js"></script>
+	<script src="res/biskwit.js"></script>
 	<script src="res/add-com.js"></script>
 </html>
