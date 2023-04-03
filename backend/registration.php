@@ -24,11 +24,11 @@
 				echo "{'status': 400, 'message': 'Password not match'}";
 			}
 		}else{
-			echo "{'b': 'b'}";
+			echo "{'status': 400, 'message': 'User ID is already existed in the server'}";
 		}
 	}
 	function user($conn, $userID, $password) : bool{
-		return mysqli_num_rows(mysqli_query($conn, "SELECT * FROM users WHERE userID = '$userID' AND password = '$password'")) <= 0;
+		return mysqli_num_rows(mysqli_query($conn, "SELECT * FROM users WHERE userID = '$userID'")) <= 0;
 	}
 	function myData($std, $key) : string{
 		$result = "";
