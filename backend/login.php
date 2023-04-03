@@ -1,10 +1,10 @@
 <?php
 	include("database.php");
 	$std = new solar_system();
-	if(!isset($_POST['studentID']) || !isset($_POST['password'])){
+	if(!isset($_POST['userID']) || !isset($_POST['password'])){
 		echo "Error";
 	}else{
-		$studentID = $std->encrypt($_POST['studentID']);
+		$studentID = $std->encrypt($_POST['userID']);
 		$password = sha1($_POST['password']);
 
 		if(user($conn, $studentID, $password)){
