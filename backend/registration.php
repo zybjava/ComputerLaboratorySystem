@@ -2,7 +2,11 @@
 	include("database.php");
 	$std = new solar_system();
 	if(!isset($_POST['userID']) || !isset($_POST['password'])){
-		echo "Error";
+		echo json_decode(json_encode('{"status": 400, "message": "Cant find"}'));
+	}else if(strlen($_POST['userID']) <= 5){
+		echo json_decode(json_encode('{"status": 400, "message": "Atleast 5 characters long for userID"}'));
+	}else if(strlen($_POST['password']) <= 8){
+		echo json_decode(json_encode('{"status": 400, "message": "8 characters long for password"}'));
 	}else{
 		$userID = myData($std, 'userID');
 		$firstname = myData($std, 'firstname');
@@ -16,15 +20,15 @@
 			if($password == $password2){
 				$sql = mysqli_query($conn, "INSERT INTO users (userID, firstname, middlename, lastname, office, password) VALUES ('$userID', '$firstname', '$middlename', '$lastname', '$office', '$password')");
 				if($sql){
-					echo json_encode("{'status': 300, 'redirect': 'add-computer.html'}");
+					echo json_decode(json_encode('{"status": 300, "redirect": "add-computer.html"}'));
 				}else{
 					echo mysqli_error($conn);
 				}
 			}else{
-				echo json_encode("{'status': 400, 'message': 'Password not match'}");
+				echo json_decode(json_encode('{"status": 400, "message": "Password not match"}'));
 			}
 		}else{
-			echo json_encode("{'status': 400, 'message': 'User ID is already existed in the server'}");
+			echo json_decode(json_encode('{"status": 400, "message": "User ID is already existed in the server"}'));
 		}
 	}
 	function user($conn, $userID, $password) : bool{
