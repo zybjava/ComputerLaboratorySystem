@@ -1,3 +1,8 @@
+<?php
+	include("backend/database.php");
+	$system = new solar_system();
+	$sql = mysqli_query($conn, "SELECT * FROM users");
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -39,7 +44,7 @@
 				</ul>
 			</section>
 			<main>
-				<div class="form" id="add-new-device" method="POST" action="backend/add-pc.php">
+				<div class="form" id="add-new-device">
 					<h1>Computer Information</h1>
 					<span>
 						<label for="roomname">Room name:</label>
@@ -61,7 +66,16 @@
 					</span>
 					<span>
 						<label for="reciever">Recieve by:</label>
-						<input type="text" id="reciever" name="reciever">
+						<input list="users" type="text" id="reciever" name="reciever">
+						<datalist id="users">
+							<?php
+								foreach($sql as $s){
+							?>
+							<option value="<?php echo $system->decrypt($s['userID']);?>"><!--<?php echo $system->decrypt($s['lastname']);?>, <?php echo $system->decrypt($s['firstname']);?> <?php echo $system->decrypt($s['middlename']);?></option-->
+							<?php
+								}
+							?>
+						</datalist>
 					</span>
 					<span>
 						<label for="model">Model:</label>

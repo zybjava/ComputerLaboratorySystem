@@ -70,7 +70,7 @@
 			}
 			$bins = explode(" ", $bin);
 			$bin = "";
-			for($i = 0; $i < count($bins) - 1; $i++){
+			for($i = 0; $i < count($bins); $i++){
 				$bin .= $this->from_binary($bins[$i]);
 			}
 			return $bin;

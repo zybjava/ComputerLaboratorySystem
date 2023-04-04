@@ -10,12 +10,12 @@
 		
 		if(check_pc($conn, $devID)){
 			if(mysqli_query($conn, "INSERT INTO computers (computer_id, device_id, room) VALUES ('$comID', '$devID', '$room')")){
-				header("Location: ../add-computer.html	");
+				echo '{"status": 200, "message": "Data Added successfully"}';
 			}else{
-				echo mysqli_error($conn);
+				echo '{"status": 400, "message": "' . mysqli_error($conn) . '"}';
 			}
 		}else{
-			echo "Already Existed";
+			echo '{"status": 400, "message": "Data is already existed"}';
 		}
 	}
 	function check_pc($conn, $devID) : bool {
