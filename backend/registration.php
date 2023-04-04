@@ -20,7 +20,7 @@
 			if($password == $password2){
 				$sql = mysqli_query($conn, "INSERT INTO users (userID, firstname, middlename, lastname, office, password) VALUES ('$userID', '$firstname', '$middlename', '$lastname', '$office', '$password')");
 				if($sql){
-					echo json_decode(json_encode('{"status": 300, "redirect": "add-computer"}'));
+					echo json_decode(json_encode('{"status": 300, "user": "' . $userID . '", "redirect": "add-computer"}'));
 				}else{
 					echo mysqli_error($conn);
 				}

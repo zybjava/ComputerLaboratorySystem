@@ -48,14 +48,16 @@ $("#log-reg-submit").onclick = async () => {
 	if(result.status == 400){
 		$("#log-reg-title").textContent = result.message
 	}else if(result.status == 300){
-		let cookies = new biskwit("dll_user")
-		cookies.setCookie(userID)
-		location.href = result.redirect
+		let cookies = new biskwit(document, "dll_user")
+		cookies.setCookie(result.user)
+		setTimeout(() => {
+			location.href = result.redirect
+		}, 1000)
 	}
 }
 
 window.onload = () => {
-	let cookies = new biskwit("dll_user")
+	let cookies = new biskwit(document, "dll_user")
 	if(cookies.issetCookie()){
 		location.href = "add-computer"
 	}

@@ -1,15 +1,15 @@
 class biskwit{
-	constructor(key){
+	constructor(doc, key){
 		this.key = key
+		this.doc = doc
 	}
-	setCookie(value){
+	setCookie(value= typeof String){
 		let date = new Date()
 		date.setTime(date.getTime() + (7 * (24 * (60 * (60 * 1000)))))
-		document.cookie = `${this.key}=${value};expires=${date.toUTCString()};path=/`
+		this.doc.cookie = `${this.key}=${value};expires=${date.toUTCString()};path=/`
 	}
 	getCookie(){
-		let cookie = document.cookie
-		let decode = decodeURIComponent(cookie)
+		let decode = decodeURIComponent(this.doc.cookie)
 		let split = decode.split(";")
 		for(let c in split){
 			let new_cookie = split[c]
@@ -25,10 +25,9 @@ class biskwit{
 	clearCookie(){
 		let date = new Date()
 		date.setTime(date.getTime() + (0))
-		document.cookie = `${this.key}='';expires=${date.toUTCString()};path=/`
+		this.doc.cookie = `${this.key}='';expires=${date.toUTCString()};path=/`
 	}
 	issetCookie(){
-		alert(this.getCookie() + this.key)
-		return this.getCookie() != ""
+		return this,this.getCookie() != ""
 	}
 }
