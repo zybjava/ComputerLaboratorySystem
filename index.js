@@ -23,5 +23,7 @@ app.get('/', (req, res) => {
 })
 
 app.listen(PORT, () => {
+	// To create a database
+	new SQL_Computers()
 	console.log(`Currently listening to PORT: ${PORT}`)
 })

@@ -4,7 +4,7 @@ const database = new sqlite.Database("database/database.sqlite")
 class SQL_Computers{
 	constructor(){
 		this.db = database
-		this.db.serialized(() => {
+		this.db.serialize(() => {
 			this.db.run(`CREATE TABLE IF NOT EXISTS computers (
 				computerID VARCHAR(100) NOT NULL PRIMARY KEY,
 				computerName VARCHAR(100) NOT NULL,
@@ -15,12 +15,12 @@ class SQL_Computers{
 		})
 	}
 	addComputer(obj){
-		this.db.serialized(() => {
+		this.db.serialize(() => {
 			this.db.run("INSERT INTO computers (computerID, computerName, monitorID, roomName, departmentID) VALUES ('$computerID', '$computerName', '$monitorID', '$roomName', '$departmentID')", obj)
 		})
 	}
 	getComputers(id){
-		this.db.serialized(() => {
+		this.db.serialize(() => {
 			this.db.run("SELECT * FROM computers WHERE ID = ?", id)
 		})
 	}
@@ -35,7 +35,7 @@ class SQL_Computers{
 		if(obj['$departmentID'] != undefined)
 			columns.push(`departmentID = ${obj['$departmentID']}`)
 		let column = columns.join(", ")
-		this.db.serialized(() => {
+		this.db.serialize(() => {
 			this.db.run(`UPDATE computers SET ${column} WHERE ID = ?`, id)
 		})
 	}
