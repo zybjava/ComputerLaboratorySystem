@@ -7,16 +7,19 @@ const cors = require("cors")
 const app = express()
 const parser = body.urlencoded({ extended: false })
 
-const PORT = process.env.PORT | 3000 | 5000 | 7000
+const PORT = process.env.PORT || 8080
 
 app.use(cors())
 app.use(express.static("public"))
 app.use("/res", express.static(path.join(`${__dirname}/resources`)))
 
-
+app.post('/post', (req, res) => {
+	console.log('sent')
+	res.redirect('/')
+})
 
 app.get('/', (req, res) => {
-	res.send("Welcome hehe")
+	res.send('Please run the ReactJS')
 })
 
 app.listen(PORT, () => {
