@@ -1,5 +1,5 @@
 const sqlite = require("sqlite3").verbose()
-const database = sqlite.Database("database.sqlite")
+const database = new sqlite.Database("database/database.sqlite")
 
 class SQL_Computers{
 	constructor(){

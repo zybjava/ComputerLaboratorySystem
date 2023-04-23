@@ -1,28 +1,29 @@
 {
-  "name": "computerlaboratorysystem",
-  "version": "0.0.1",
-  "description": "A simple computer laboratory system with nodejs and sqlite",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/RyannKim327/ComputerLaboratorySystem.git"
-  },
-  "keywords": [
-    "System"
-  ],
-  "author": "RyannKim327",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/RyannKim327/ComputerLaboratorySystem/issues"
-  },
-  "homepage": "https://github.com/RyannKim327/ComputerLaboratorySystem#readme",
-  "dependencies": {
-    "body-parser": "^1.20.2",
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
-    "sqlite3": "^5.1.6"
-  }
+	"name": "computerlaboratorysystem",
+	"version": "0.0.1",
+	"description": "A simple computer laboratory system with nodejs and sqlite",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/RyannKim327/ComputerLaboratorySystem.git"
+	},
+	"keywords": [
+		"System"
+	],
+	"author": "RyannKim327",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/RyannKim327/ComputerLaboratorySystem/issues"
+	},
+	"homepage": "https://github.com/RyannKim327/ComputerLaboratorySystem#readme",
+	"dependencies": {
+		"body-parser": "^1.20.2",
+		"cors": "^2.8.5",
+		"express": "^4.18.2",
+		"sqlite3": "^5.1.6"
+	}
 }
