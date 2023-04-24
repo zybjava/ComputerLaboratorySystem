@@ -2,11 +2,31 @@ import React from 'react'
 import './App.css';
 
 function App() {
-
+	let state = {}
+	const HandleStates = (event) => {
+		console.log(event.target.value)
+		state = {
+			[event.target.name]: event.target.value
+		}
+	}
+	const Send = (event) => {
+		/*
+		axios.post("http://localhost:8080/post", state).then((r) => {
+			console.log(r.data)
+		})
+		*/
+		fetch("http://localhost:8080/post", {
+			method: 'POST',
+			body: JSON.stringify(state)
+		}).then(r => {
+			return r.json()
+		})
+		event.preventDefault()
+	}
 	return (
 		<div className="App">
 			<main className="App-main">
-				<form method="POST" action="../../post">
+				<form method="POST" onSubmit={Send}>
 					<table>
 						<tbody>
 							<tr>
@@ -14,7 +34,7 @@ function App() {
 									<label htmlFor='computerID'>Computer ID:</label>
 								</th>
 								<td>
-									<input type="text" name="computerID" id="computerID" />
+									<input onChange={HandleStates} type="text" name="computerID" id="computerID" />
 								</td>
 							</tr>
 							<tr>
@@ -22,7 +42,7 @@ function App() {
 									<label htmlFor='computerName'>Computer Name:</label>
 								</th>
 								<td>
-									<input type="text" name="computerName" id="computerName"/>								
+									<input onChange={HandleStates} type="text" name="computerName" id="computerName"/>								
 								</td>
 							</tr>
 							<tr>
@@ -30,7 +50,7 @@ function App() {
 									<label htmlFor='monitorID'>Monitor ID:</label>
 								</th>
 								<td>
-									<input type="text" name="monitorID" id="monitorID"/>
+									<input onChange={HandleStates} type="text" name="monitorID" id="monitorID"/>
 								</td>
 							</tr>
 							<tr>
@@ -38,7 +58,7 @@ function App() {
 									<label htmlFor='roomName'>Room Name:</label>
 								</th>
 								<td>
-									<input type="text" name="roomName" id="roomName"/>
+									<input onChange={HandleStates} type="text" name="roomName" id="roomName"/>
 								</td>
 							</tr>
 							<tr>
@@ -46,7 +66,7 @@ function App() {
 									<label htmlFor='departmentID'>Department ID:</label>
 								</th>
 								<td>
-									<input type="text" name="departmentID" id="departmentID"/>
+									<input onChange={HandleStates} type="text" name="departmentID" id="departmentID"/>
 								</td>
 							</tr>
 							<tr>

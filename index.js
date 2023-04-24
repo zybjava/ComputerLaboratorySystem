@@ -1,7 +1,6 @@
 const { SQL_Computers } = require("./database/database")
 const express = require("express")
 const body = require("body-parser")
-const path = require("path")
 const cors = require("cors")
 
 const app = express()
@@ -10,12 +9,11 @@ const parser = body.urlencoded({ extended: false })
 const PORT = process.env.PORT || 8080
 
 app.use(cors())
-app.use(express.static("public"))
-app.use("/res", express.static(path.join(`${__dirname}/resources`)))
+app.use(body.json())
 
-app.post('/post', (req, res) => {
-	console.log('sent')
-	res.redirect('/')
+app.post('/post', parser, (req, res) => {
+	console.log(req.body)
+	res.send(JSON.stringify(req.body))
 })
 
 app.get('/', (req, res) => {

@@ -28,7 +28,19 @@
 	color: #61dafb;
 }
 
-.App-main > form > table > button{
+.App-main > form > table > tbody > tr > th{
+	text-align: left;
+}
+
+.App-main > form > table > tbody > tr > td > button,
+.App-main > form > table > tbody > tr > td > input{
+	border-radius: 1em;
+	border: 1px #ffffff solid;
+	background-color: #282c34;
+	color: #ffffff;
+	padding: 0.25em 0.75em;
+}
+.App-main > form > table > tbody > tr > td > button{
 	width: 100%;
 }
 
