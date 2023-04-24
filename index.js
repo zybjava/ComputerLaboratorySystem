@@ -11,9 +11,12 @@ const PORT = process.env.PORT || 8080
 app.use(cors())
 app.use(body.json())
 
-app.post('/post', parser, (req, res) => {
-	console.log(req.body)
-	res.send(JSON.stringify(req.body))
+app.post('/post', (req, res) => {
+	let sql = new SQL_Computers()
+	sql.addComputer(req.body)
+	let json = req.body
+	json['success'] = true
+	res.send(JSON.stringify(json))
 })
 
 app.get('/', (req, res) => {

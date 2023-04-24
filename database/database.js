@@ -15,8 +15,15 @@ class SQL_Computers{
 		})
 	}
 	addComputer(obj){
+		console.log(obj)
 		this.db.serialize(() => {
-			this.db.run("INSERT INTO computers (computerID, computerName, monitorID, roomName, departmentID) VALUES ('$computerID', '$computerName', '$monitorID', '$roomName', '$departmentID')", obj)
+			this.db.run("INSERT INTO computers (computerID, computerName, monitorID, roomName, departmentID) VALUES ($computerID, $computerName, $monitorID, $roomName, $departmentID)", {
+				'$computerID': obj.$computerID,
+				'$computerName': obj.$computerName,
+				'$monitorID': obj.$monitorID,
+				'$roomName': obj.$roomName,
+				'$departmentID': obj.$departmentID,
+			})
 		})
 	}
 	getComputers(id){
