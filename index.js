@@ -18,7 +18,6 @@ app.post('/post', (req, res) => {
 
 app.get('/', (req, res) => {
 	let sql = new SQL_Computers()
-	// console.log(sql.getComputers(req.query.id))
 	sql.getComputers(res, req.query.id)
 })
 
