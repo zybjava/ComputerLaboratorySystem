@@ -14,22 +14,38 @@ class SQL_Computers{
 			)`)
 		})
 	}
-	addComputer(obj){
+	addComputer(res, obj){
 		console.log(obj)
 		this.db.serialize(() => {
-			this.db.run("INSERT INTO computers (computerID, computerName, monitorID, roomName, departmentID) VALUES ($computerID, $computerName, $monitorID, $roomName, $departmentID)", {
-				'$computerID': obj.$computerID,
-				'$computerName': obj.$computerName,
-				'$monitorID': obj.$monitorID,
-				'$roomName': obj.$roomName,
-				'$departmentID': obj.$departmentID,
+			this.db.run("INSERT INTO computers (computerID, computerName, monitorID, roomName, departmentID) VALUES ($computerID, $computerName, $monitorID, $roomName, $departmentID)", obj, (e) => {
+				if(e){
+					res.send(JSON.stringify({
+						success: true,
+						message: "Error occured, might be the ID is already existed"
+					}))
+				}else{
+					res.send(JSON.stringify({
+						success: true,
+						message: "New Data Added successfully"
+					}))
+				}
 			})
+			// res.send(done)
 		})
 	}
-	getComputers(id){
-		this.db.serialize(() => {
-			this.db.run("SELECT * FROM computers WHERE ID = ?", id)
-		})
+	getComputers(res, id){
+		if(id == null){
+			id = ""
+		}
+		if(id.startsWith("COMPUTER_ID_")){
+			this.db.all("SELECT * FROM computers WHERE computerID = ?", id,  (err, rows) => {
+				res.send(rows)
+			})
+		}else{
+			this.db.all( "SELECT * FROM computers",  (err, rows) => {
+				res.send(rows)
+			})
+		}
 	}
 	updateComputer(id, obj){
 		let columns = []

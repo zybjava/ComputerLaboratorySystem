@@ -13,14 +13,13 @@ app.use(body.json())
 
 app.post('/post', (req, res) => {
 	let sql = new SQL_Computers()
-	sql.addComputer(req.body)
-	let json = req.body
-	json['success'] = true
-	res.send(JSON.stringify(json))
+	sql.addComputer(res, req.body)
 })
 
 app.get('/', (req, res) => {
-	res.send('Please run the ReactJS')
+	let sql = new SQL_Computers()
+	// console.log(sql.getComputers(req.query.id))
+	sql.getComputers(res, req.query.id)
 })
 
 app.listen(PORT, () => {

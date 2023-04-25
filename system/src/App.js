@@ -4,7 +4,6 @@ import './App.css';
 function App() {
 	let state = {}
 	const HandleStates = (event) => {
-		console.log(event.target.value)
 		state[`$${event.target.name}`] = event.target.value
 	}
 	const Send = (event) => {
@@ -30,6 +29,7 @@ function App() {
 				elems[3].value = "CL1"
 				elems[4].value = "BSIT_DEPT"
 			}
+			alert(r.message)
 		})
 		event.preventDefault()
 	}
@@ -44,7 +44,7 @@ function App() {
 									<label htmlFor='computerID'>Computer ID:</label>
 								</th>
 								<td>
-									<input onChange={HandleStates} type="text" name="computerID" id="computerID" />
+									<input onKeyUp={HandleStates} onChange={HandleStates} type="text" name="computerID" id="computerID" />
 								</td>
 							</tr>
 							<tr>
@@ -52,7 +52,7 @@ function App() {
 									<label htmlFor='computerName'>Computer Name:</label>
 								</th>
 								<td>
-									<input onChange={HandleStates} type="text" name="computerName" id="computerName"/>								
+									<input onKeyUp={HandleStates} onChange={HandleStates} type="text" name="computerName" id="computerName"/>								
 								</td>
 							</tr>
 							<tr>
@@ -60,7 +60,7 @@ function App() {
 									<label htmlFor='monitorID'>Monitor ID:</label>
 								</th>
 								<td>
-									<input onChange={HandleStates} type="text" name="monitorID" id="monitorID"/>
+									<input onKeyUp={HandleStates} onChange={HandleStates} type="text" name="monitorID" id="monitorID"/>
 								</td>
 							</tr>
 							<tr>
@@ -68,7 +68,7 @@ function App() {
 									<label htmlFor='roomName'>Room Name:</label>
 								</th>
 								<td>
-									<input onChange={HandleStates} type="text" name="roomName" id="roomName"/>
+									<input onKeyUp={HandleStates} onChange={HandleStates} type="text" name="roomName" id="roomName"/>
 								</td>
 							</tr>
 							<tr>
@@ -76,7 +76,7 @@ function App() {
 									<label htmlFor='departmentID'>Department ID:</label>
 								</th>
 								<td>
-									<input onChange={HandleStates} type="text" name="departmentID" id="departmentID"/>
+									<input onKeyUp={HandleStates} onChange={HandleStates} type="text" name="departmentID" id="departmentID"/>
 								</td>
 							</tr>
 							<tr>
