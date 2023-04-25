@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 export default function ComputerForm(){
-	let state = {}
+	let state = {
+		'$computerID': "COMPUTER_ID_",
+		'$computerName': "PC_",
+		'$monitorID': "MONITOR_ID_",
+		'$roomName': "CL1",
+		'$departmentID': "BSIT_DEPT"
+	}
 	const HandleStates = (event) => {
 		state[`$${event.target.name}`] = event.target.value
 	}
+
 	const Send = (event) => {
 		fetch("http://localhost:8080/post", {
 			method: 'POST',
@@ -27,6 +34,13 @@ export default function ComputerForm(){
 		})
 		event.preventDefault()
 	}
+	useEffect(() => {
+		document.getElementById("computerID").value = "COMPUTER_ID_"
+		document.getElementById("computerName").value = "PC_"
+		document.getElementById("monitorID").value = "MONITOR_ID_"
+		document.getElementById("roomName").value = "CL1"
+		document.getElementById("departmentID").value = "BSIT_DEPT"
+	})
 	return (
 		<div>
 			<main className="App-main">
