@@ -28,19 +28,40 @@
 	color: #61dafb;
 }
 
-.App-main > form > table > tbody > tr > th{
+.App-main {
+	display: flex;
+	flex-direction: row;
+}
+
+.App-main > .Class-table{
+	align-self: flex-start;
+}
+
+.App-main > .Class-table{
+	margin-top: 1em;
+}
+
+.App-main > table > tbody > tr > th,
+.App-main > table > tbody > tr > td{
+	padding: 0.25em;
+	align-items: center;
+	font-family: 'Times New Roman', Times, serif;
+	font-variant: small-caps;
+}
+
+.App-main > main > form > table > tbody > tr > th{
 	text-align: left;
 }
 
-.App-main > form > table > tbody > tr > td > button,
-.App-main > form > table > tbody > tr > td > input{
+.App-main > main > form > table > tbody > tr > td > button,
+.App-main > main > form > table > tbody > tr > td > input{
 	border-radius: 1em;
 	border: 1px #ffffff solid;
 	background-color: #282c34;
 	color: #ffffff;
 	padding: 0.25em 0.75em;
 }
-.App-main > form > table > tbody > tr > td > button{
+.App-main > main > form > table > tbody > tr > td > button{
 	width: 100%;
 }
 
@@ -50,6 +71,44 @@
 
 .Class-table > tbody > tr > th, .Class-table > tbody > tr > td {
 	text-align: justify;
+}
+
+.Nav-main {
+	width: 25%;
+	display: flex;
+	flex-direction: column;
+	background-color: #131320;
+}
+
+.Nav-main > ul {
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	align-self: center;
+	list-style: none;
+	padding: 1em;
+	height: 100%;
+	box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+.Nav-main > ul > li > *, .Nav-main > h3,  .Nav-main > footer > h3  {
+	color: #ffffff;
+	text-decoration: none;
+}
+.Nav-main > ul > li{
+	border-bottom: 1px #ffffff solid;
+	border-width: 100%;
+}
+
+.App-main {
+	width: 100%;
+	box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-moz-box-sizing: border-box;
 }
 
 @keyframes App-logo-spin {

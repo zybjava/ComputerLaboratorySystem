@@ -31,6 +31,9 @@ export default function ComputerLists(){
 			{data.map(r => {
 				return (
 					<table className='Class-table'>
+						<caption>
+							<h3>Computer Lists</h3>
+						</caption>
 						<tbody>
 							<tr>
 								<th>Computer ID</th>

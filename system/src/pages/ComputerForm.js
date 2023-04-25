@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 
 export default function ComputerForm(){
 	let state = {
@@ -42,8 +42,8 @@ export default function ComputerForm(){
 		document.getElementById("departmentID").value = "BSIT_DEPT"
 	})
 	return (
-		<div>
-			<main className="App-main">
+		<div className="App-main">
+			<main>
 				<form method="POST" onSubmit={Send}>
 					<table>
 						<caption>
