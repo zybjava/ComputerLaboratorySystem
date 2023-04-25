@@ -99,9 +99,9 @@
 	color: #ffffff;
 	text-decoration: none;
 }
-.Nav-main > ul > li{
+.Nav-main > ul > li:hover{
 	border-bottom: 1px #ffffff solid;
-	border-width: 100%;
+	animation: ListHover 1.5s 1 linear infinite;
 }
 
 .App-main {

@@ -41,8 +41,6 @@ export default function ComputerLists(){
 								<th>Monitor ID</th>
 								<th>Room Name</th>
 								<th>Department ID</th>
-								<th></th>
-								<th></th>
 							</tr>
 							<tr>
 								<td>{r.computerID}</td>
