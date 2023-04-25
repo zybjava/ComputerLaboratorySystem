@@ -44,6 +44,14 @@
 	width: 100%;
 }
 
+.Class-table > tbody > tr > th, .Class-table > tbody > tr > td{
+	border: 1px #aaaaaa solid;
+}
+
+.Class-table > tbody > tr > th, .Class-table > tbody > tr > td {
+	text-align: justify;
+}
+
 @keyframes App-logo-spin {
 	from {
 		transform: rotate(0deg);
