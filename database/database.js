@@ -30,7 +30,6 @@ class SQL_Computers{
 					}))
 				}
 			})
-			// res.send(done)
 		})
 	}
 	getComputers(res, id){
