@@ -5,9 +5,11 @@ export default function ComputerLists() {
 	const [data, setData] = useState([])
 
 	useEffect(() => {
-		axios.get("http://localhost:8080").then(r => {
-			setData(r.data)
-		})
+		setInterval(() => {
+			axios.get("http://localhost:8080").then(r => {
+				setData(r.data)
+			})
+		}, 1000)
 	}, [])
 
 	const UpdateDesign = {
@@ -26,7 +28,7 @@ export default function ComputerLists() {
 		border: "1px #ff0000 solid"
 	}
 
-	function DeleteData (data) {
+	const DeleteData = (data) => {
 		// Delete
 		fetch("http://localhost:8080/delete-computer-api", {
 			method: 'POST',
@@ -34,14 +36,16 @@ export default function ComputerLists() {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({data})
-		}).then((r => {
+		}).then(r => {
 			return r.json()
-		}))
+		}).then(r => {
+			alert(r.message)
+		})
 	}
 
 	const UpdateData = (data) => {
 		// Update
-		console.log(data)
+		console.log(JSON.stringify(data))
 	}
 
 	return (
@@ -58,7 +62,7 @@ export default function ComputerLists() {
 						<th>Room Name</th>
 						<th>Department ID</th>
 					</tr>
-					{data.map(r => {
+					{data.map((r) => {
 						return (
 							<tr>
 								<td>{r.computerID}</td>
@@ -67,10 +71,10 @@ export default function ComputerLists() {
 								<td>{r.roomName}</td>
 								<td>{r.departmentID}</td>
 								<td>
-									<button style={UpdateDesign} onClick={UpdateData}>Update</button>
+									<input type="button" style={UpdateDesign} onClick={() => UpdateData(r.computerID)} value="Update" />
 								</td>
 								<td>
-									<button style={DeleteDesign} onClick={() => {DeleteData(r.computerID)}}>Delete</button>
+									<input type="button" style={DeleteDesign} onClick={() => DeleteData(r.computerID)} value="Delete" />
 								</td>
 							</tr>
 						)

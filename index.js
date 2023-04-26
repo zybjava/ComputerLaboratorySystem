@@ -16,14 +16,18 @@ app.post('/add-new-computer-api', (req, res) => {
 	sql.addComputer(res, req.body)
 })
 
-app.get('/delete-computer-api', (req, res) => {
-	console.log(JSON.stringify(req))
-	res.send("")
+app.post('/delete-computer-api', (req, res) => {
+	let sql = new SQL_Computers()
+	sql.deleteComputer(res, req.body.data)
 })
 
 app.get('/', (req, res) => {
 	let sql = new SQL_Computers()
-	sql.getComputers(res, req.query.id)
+	let obj = {
+		id: req.query.id,
+		orderby: req.query.order
+	}
+	sql.getComputers(res, obj)
 })
 
 app.listen(PORT, () => {
