@@ -73,6 +73,7 @@
 
 
 .Class-table > tbody > tr > th, .Class-table > tbody > tr > td{
+	user-select: none;
 	border: 1px #000000 solid;
 	text-shadow: 3px 3px 5px #ffffff;
 }

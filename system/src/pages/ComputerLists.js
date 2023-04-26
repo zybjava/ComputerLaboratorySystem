@@ -3,15 +3,11 @@ import axios from 'axios'
 
 export default function ComputerLists() {
 	const [data, setData] = useState([])
+	const [orderBy, setOrder] = useState("")
 
-	useEffect(() => {
-		setInterval(() => {
-			axios.get("http://localhost:8080").then(r => {
-				setData(r.data)
-			})
-		}, 1000)
-	}, [])
-
+	axios.get(`http://localhost:8080/?order=${orderBy}`).then(r => {
+		setData(r.data)
+	})			
 	const UpdateDesign = {
 		backgroundColor: "#255025aa",
 		color: "#00ff00",
@@ -26,6 +22,10 @@ export default function ComputerLists() {
 		padding: "0.25em 0.75em",
 		borderRadius: "1em",
 		border: "1px #ff0000 solid"
+	}
+
+	const OrderBy = (p) => {
+		setOrder(p)
 	}
 
 	const DeleteData = (data) => {
@@ -48,6 +48,8 @@ export default function ComputerLists() {
 		console.log(JSON.stringify(data))
 	}
 
+
+
 	return (
 		<div className='App-main'>
 			<table className='Class-table'>
@@ -56,11 +58,11 @@ export default function ComputerLists() {
 				</caption>
 				<tbody>
 					<tr>
-						<th>Computer ID</th>
-						<th>Computer Name</th>
-						<th>Monitor ID</th>
-						<th>Room Name</th>
-						<th>Department ID</th>
+						<th onClick={() => OrderBy("computerID")}>Computer ID</th>
+						<th onClick={() => OrderBy("computerName")}>Computer Name</th>
+						<th onClick={() => OrderBy("monitorID")}>Monitor ID</th>
+						<th onClick={() => OrderBy("roomName")}>Room Name</th>
+						<th onClick={() => OrderBy("departmentID")}>Department ID</th>
 					</tr>
 					{data.map((r) => {
 						return (

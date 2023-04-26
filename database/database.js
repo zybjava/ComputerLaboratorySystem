@@ -33,9 +33,9 @@ class SQL_Computers{
 	}
 	getComputers(res, obj){
 		let id = obj.id
-		let order = obj.order
+		let order = obj.orderby
 		let orderby = " ORDER BY computerID"
-		if(order != undefined)
+		if(order != undefined && order != "")
 			orderby = " ORDER BY " + order
 		if(id == undefined){
 			id = ""
