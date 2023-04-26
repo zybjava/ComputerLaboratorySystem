@@ -6,7 +6,7 @@ class SQL_Computers{
 		this.db = database
 		this.db.serialize(() => {
 			this.db.run(`CREATE TABLE IF NOT EXISTS computers (
-				computerID VARCHAR(100) NOT NULL PRIMARY KEY,
+				computerID VARCHAR(100) NOT NULL PRIMARY KEY UNIQUE,
 				computerName VARCHAR(100) NOT NULL,
 				monitorID VARCHAR(100) NOT NULL,
 				roomName VARCHAR(100) NOT NULL,
@@ -15,7 +15,6 @@ class SQL_Computers{
 		})
 	}
 	addComputer(res, obj){
-		console.log(obj)
 		this.db.serialize(() => {
 			this.db.run("INSERT INTO computers (computerID, computerName, monitorID, roomName, departmentID) VALUES ($computerID, $computerName, $monitorID, $roomName, $departmentID)", obj, (e) => {
 				if(e){

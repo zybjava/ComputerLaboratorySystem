@@ -13,7 +13,7 @@ export default function ComputerForm(){
 	}
 
 	const Send = (event) => {
-		fetch("http://localhost:8080/post", {
+		fetch("/add-new-computer-api", {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'

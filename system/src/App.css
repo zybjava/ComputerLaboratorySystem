@@ -1,4 +1,7 @@
 .App {
+	background-image: url('resources/bg.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
 	text-align: center;
 }
 
@@ -14,14 +17,13 @@
 }
 
 .App-header, .App-main {
-	background-color: #282c34;
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	font-size: calc(10px + 2vmin);
-	color: white;
+	color: 000000;
 }
 
 .App-link {
@@ -31,6 +33,7 @@
 .App-main {
 	display: flex;
 	flex-direction: row;
+	background-color: #61dafb60;
 }
 
 .App-main > .Class-table{
@@ -56,17 +59,22 @@
 .App-main > main > form > table > tbody > tr > td > button,
 .App-main > main > form > table > tbody > tr > td > input{
 	border-radius: 1em;
-	border: 1px #ffffff solid;
-	background-color: #282c34;
-	color: #ffffff;
+	border: 1px #000000 solid;
+	background-color: transparent;
+	color: #000000;
 	padding: 0.25em 0.75em;
+	font-weight: bold;
+	font-family: 'Times New Roman', Times, serif;
 }
+
 .App-main > main > form > table > tbody > tr > td > button{
 	width: 100%;
 }
 
+
 .Class-table > tbody > tr > th, .Class-table > tbody > tr > td{
-	border: 1px #aaaaaa solid;
+	border: 1px #000000 solid;
+	text-shadow: 3px 3px 5px #ffffff;
 }
 
 .Class-table > tbody > tr > th, .Class-table > tbody > tr > td {
@@ -77,7 +85,8 @@
 	width: 25%;
 	display: flex;
 	flex-direction: column;
-	background-color: #131320;
+	background-color: #61dafb60;
+	box-shadow: 0 3px 10px #11191c;
 }
 
 .Nav-main > ul {
@@ -95,12 +104,18 @@
 	-moz-box-sizing: border-box;
 }
 
+.Nav-main > ul > li > *{
+	font-family: 'Times New Roman', Times, serif;
+	font-weight: bold ;
+	font-variant: small-caps;
+}
+
 .Nav-main > ul > li > *, .Nav-main > h3,  .Nav-main > footer > h3  {
-	color: #ffffff;
+	color: #000000;
 	text-decoration: none;
 }
 .Nav-main > ul > li:hover{
-	border-bottom: 1px #ffffff solid;
+	border-bottom: 1px #000000 solid;
 	animation: ListHover 1.5s 1 linear infinite;
 }
 
