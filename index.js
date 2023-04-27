@@ -22,8 +22,14 @@ app.post('/delete-computer-api', (req, res) => {
 })
 
 app.post('/update-computer-api', (req, res) => {
+	if(req.body.computerID == undefined){
+		return res.send(JSON.stringify({
+			"success": false,
+			"message": "ComputerID is not defined"
+		}))
+	}
 	let sql = new SQL_Computers()
-	sql.update(res, id, req.body.data)
+	sql.updateComputer(res, req.body)
 })
 
 app.get('/', (req, res) => {

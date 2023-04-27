@@ -50,20 +50,24 @@ class SQL_Computers{
 			})
 		}
 	}
-	updateComputer(res, id, obj){
+	updateComputer(res, obj){
 		let columns = []
-		if(obj['$computerName'] != undefined)
-			columns.push(`computerName = ${obj['$computerName']}`)
+		if(obj['computerName'] != undefined)
+			columns.push(`computerName = ${obj['computerName']}`)
 		if(obj['$monitorID'] != undefined)
-			columns.push(`monitorID = ${obj['$monitorID']}`)
+			columns.push(`monitorID = ${obj['monitorID']}`)
 		if(obj['$roomName'] != undefined)
-			columns.push(`roomName = ${obj['$roomName']}`)
+			columns.push(`roomName = ${obj['roomName']}`)
 		if(obj['$departmentID'] != undefined)
-			columns.push(`departmentID = ${obj['$departmentID']}`)
+			columns.push(`departmentID = ${obj['departmentID']}`)
 		let column = columns.join(", ")
 		this.db.serialize(() => {
-			this.db.run(`UPDATE computers SET ${column} WHERE ID = ?`, id)
+			this.db.run(`UPDATE computers SET ${column} WHERE ID = ?`, obj.id)
 		})
+		res.send(JSON.stringify({
+			"success": true,
+			"message": "A data updated successfullyZ"
+		}))
 	}
 	deleteComputer(res, id){
 		try{

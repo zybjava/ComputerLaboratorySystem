@@ -30,23 +30,30 @@ export default function ComputerLists() {
 	}
 
 	const DeleteData = (data) => {
-		// Delete
-		fetch("http://localhost:8080/delete-computer-api", {
+		if(confirm(`Are you sure you want to delete ${data}`)){
+			// Delete
+			fetch("http://localhost:8080/delete-computer-api", {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({data})
+			}).then(r => {
+				return r.json()
+			}).then(r => {
+				alert(r.message)
+			})
+		}
+	}
+
+	const UpdateData = (data) => {
+		fetch('http://localhost:8080/update-computer-api', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({data})
-		}).then(r => {
-			return r.json()
-		}).then(r => {
-			alert(r.message)
+			body: JSON.stringify(data)
 		})
-	}
-
-	const UpdateData = (data) => {
-		// Update
-		console.log(JSON.stringify(data))
 	}
 
 
@@ -74,7 +81,13 @@ export default function ComputerLists() {
 								<td>{r.roomName}</td>
 								<td>{r.departmentID}</td>
 								<td>
-									<input type="button" style={UpdateDesign} onClick={() => UpdateData(r.computerID)} value="Update" />
+									<input type="button" style={UpdateDesign} onClick={() => UpdateData({
+										computerID: r.computerID,
+										computerName: r.computerName,
+										monitorID: r.monitorID,
+										roomName: roomName,
+										departmentID: departmentID
+									})} value="Update" />
 								</td>
 								<td>
 									<input type="button" style={DeleteDesign} onClick={() => DeleteData(r.computerID)} value="Delete" />
