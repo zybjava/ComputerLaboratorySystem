@@ -7,7 +7,8 @@ export default function ComputerLists() {
 
 	axios.get(`http://localhost:8080/?order=${orderBy}`).then(r => {
 		setData(r.data)
-	})			
+	})		
+		
 	const UpdateDesign = {
 		backgroundColor: "#255025aa",
 		color: "#00ff00",

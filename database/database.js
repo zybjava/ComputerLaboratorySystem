@@ -50,7 +50,7 @@ class SQL_Computers{
 			})
 		}
 	}
-	updateComputer(id, obj){
+	updateComputer(res, id, obj){
 		let columns = []
 		if(obj['$computerName'] != undefined)
 			columns.push(`computerName = ${obj['$computerName']}`)

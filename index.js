@@ -21,6 +21,11 @@ app.post('/delete-computer-api', (req, res) => {
 	sql.deleteComputer(res, req.body.data)
 })
 
+app.post('/update-computer-api', (req, res) => {
+	let sql = new SQL_Computers()
+	sql.update(res, id, req.body.data)
+})
+
 app.get('/', (req, res) => {
 	let sql = new SQL_Computers()
 	let obj = {
