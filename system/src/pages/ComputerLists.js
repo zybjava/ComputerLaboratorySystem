@@ -1,13 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
 export default function ComputerLists() {
 	const [data, setData] = useState([])
-	const [orderBy, setOrder] = useState("")
+	const [filter, setFilter] = useState("")
+	let order = "uselessID"
 
-	axios.get(`http://localhost:8080/?order=${orderBy}`).then(r => {
-		setData(r.data)
-	})		
+	useEffect(() => {
+		axios.get(`http://localhost:8080/?order=${order}`).then(r => {
+			setData(r.data)
+		})
+	}, [order])
 		
 	const UpdateDesign = {
 		backgroundColor: "#255025aa",
@@ -25,8 +28,11 @@ export default function ComputerLists() {
 		border: "1px #ff0000 solid"
 	}
 
+
 	const OrderBy = (p) => {
-		setOrder(p)
+		axios.get(`http://localhost:8080/?order=${p}`).then(r => {
+			setData(r.data)
+		})
 	}
 
 	const DeleteData = (data) => {
@@ -73,6 +79,10 @@ export default function ComputerLists() {
 		})
 	}
 
+	const FilterData = (event) => {
+		setFilter(event.target.textContent)
+	}
+
 	return (
 		<div className='App-main'>
 			{(data.length > 0) ?
@@ -82,14 +92,19 @@ export default function ComputerLists() {
 					</caption>
 					<tbody>
 						<tr>
+							<td maxLines="1" colSpan={7} contentEditable="true" onKeyUp={FilterData}></td>
+						</tr>
+						<tr>
 							<th onClick={() => OrderBy("computerID")}>Computer ID</th>
 							<th onClick={() => OrderBy("computerName")}>Computer Name</th>
 							<th onClick={() => OrderBy("monitorID")}>Monitor ID</th>
 							<th onClick={() => OrderBy("roomName")}>Room Name</th>
 							<th onClick={() => OrderBy("departmentID")}>Department ID</th>
+							<th onClick={() => OrderBy("uselessID")} colSpan="2">Sort to default</th>
 						</tr>
 						{data.map((r) => {
 							return (
+								(r.computerID.includes(filter) || r.computerName.includes(filter) || r.monitorID.includes(filter) || r.roomName.includes(filter) || r.departmentID.includes(filter)) ?
 								<tr>
 									<td>{r.computerID}</td>
 									<td contentEditable="true" id={"computerName_" + r.computerID}>{r.computerName}</td>
@@ -105,6 +120,7 @@ export default function ComputerLists() {
 										<input type="button" style={DeleteDesign} onClick={() => DeleteData(r.computerID)} value="Delete" />
 									</td>
 								</tr>
+								: ""
 							)
 						})}
 					</tbody>

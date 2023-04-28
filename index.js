@@ -105,6 +105,15 @@ app.post('/update-computer-api', (req, res) => {
 	sql.updateComputer(res, req.body)
 })
 
+app.get('/filter-computer-api', (req, res) => {
+	let sql = new SQL_Computers()
+	let obj = {
+		id: req.query.id,
+		orderby: req.query.order
+	}
+	sql.getComputers(res, obj, req.query.filter)
+})
+
 app.get('/', (req, res) => {
 	let sql = new SQL_Computers()
 	let obj = {
