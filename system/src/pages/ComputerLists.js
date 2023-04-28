@@ -30,7 +30,7 @@ export default function ComputerLists() {
 	}
 
 	const DeleteData = (data) => {
-		if(confirm(`Are you sure you want to delete ${data}`)){
+		if(window.confirm(`Are you sure you want to delete ${data}`)){
 			// Delete
 			fetch("http://localhost:8080/delete-computer-api", {
 				method: 'POST',
@@ -55,8 +55,6 @@ export default function ComputerLists() {
 			body: JSON.stringify(data)
 		})
 	}
-
-
 
 	return (
 		<div className='App-main'>
@@ -85,8 +83,8 @@ export default function ComputerLists() {
 										computerID: r.computerID,
 										computerName: r.computerName,
 										monitorID: r.monitorID,
-										roomName: roomName,
-										departmentID: departmentID
+										roomName: r.roomName,
+										departmentID: r.departmentID
 									})} value="Update" />
 								</td>
 								<td>
