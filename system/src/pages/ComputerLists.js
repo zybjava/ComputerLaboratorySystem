@@ -47,54 +47,74 @@ export default function ComputerLists() {
 	}
 
 	const UpdateData = (data) => {
+		let computerName = document.getElementById("computerName_" + data.computerID).textContent
+		let monitorID = document.getElementById("monitorID_" + data.computerID).textContent
+		let roomName = document.getElementById("roomName_" + data.computerID).textContent
+		let departmentID = document.getElementById("departmentID_" + data.computerID).textContent
+
+		let sendIt = {
+			computerID: data.computerID,
+			computerName: computerName,
+			monitorID: monitorID,
+			roomName: roomName,
+			departmentID: departmentID
+		}
+		console.log(sendIt)
 		fetch('http://localhost:8080/update-computer-api', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify(data)
+			body: JSON.stringify(sendIt)
+		}).then(r => {
+			return r.json()
+		}).then(r => {
+			alert(r.message)
 		})
 	}
 
 	return (
 		<div className='App-main'>
-			<table className='Class-table'>
-				<caption>
-					<h3>Computer Lists</h3>
-				</caption>
-				<tbody>
-					<tr>
-						<th onClick={() => OrderBy("computerID")}>Computer ID</th>
-						<th onClick={() => OrderBy("computerName")}>Computer Name</th>
-						<th onClick={() => OrderBy("monitorID")}>Monitor ID</th>
-						<th onClick={() => OrderBy("roomName")}>Room Name</th>
-						<th onClick={() => OrderBy("departmentID")}>Department ID</th>
-					</tr>
-					{data.map((r) => {
-						return (
-							<tr>
-								<td>{r.computerID}</td>
-								<td>{r.computerName}</td>
-								<td>{r.monitorID}</td>
-								<td>{r.roomName}</td>
-								<td>{r.departmentID}</td>
-								<td>
-									<input type="button" style={UpdateDesign} onClick={() => UpdateData({
-										computerID: r.computerID,
-										computerName: r.computerName,
-										monitorID: r.monitorID,
-										roomName: r.roomName,
-										departmentID: r.departmentID
-									})} value="Update" />
-								</td>
-								<td>
-									<input type="button" style={DeleteDesign} onClick={() => DeleteData(r.computerID)} value="Delete" />
-								</td>
-							</tr>
-						)
-					})}
-				</tbody>
-			</table>
+			{(data.length > 0) ?
+				<table className='Class-table'>
+					<caption>
+						<h3>Computer Lists</h3>
+					</caption>
+					<tbody>
+						<tr>
+							<th onClick={() => OrderBy("computerID")}>Computer ID</th>
+							<th onClick={() => OrderBy("computerName")}>Computer Name</th>
+							<th onClick={() => OrderBy("monitorID")}>Monitor ID</th>
+							<th onClick={() => OrderBy("roomName")}>Room Name</th>
+							<th onClick={() => OrderBy("departmentID")}>Department ID</th>
+						</tr>
+						{data.map((r) => {
+							return (
+								<tr>
+									<td>{r.computerID}</td>
+									<td contentEditable="true" id={"computerName_" + r.computerID}>{r.computerName}</td>
+									<td contentEditable="true" id={"monitorID_" + r.computerID}>{r.monitorID}</td>
+									<td contentEditable="true" id={"roomName_" + r.computerID}>{r.roomName}</td>
+									<td contentEditable="true" id={"departmentID_" + r.computerID}>{r.departmentID}</td>
+									<td>
+										<input type="button" style={UpdateDesign} onClick={() => UpdateData({
+											computerID: r.computerID
+										})} value="Update" />
+									</td>
+									<td>
+										<input type="button" style={DeleteDesign} onClick={() => DeleteData(r.computerID)} value="Delete" />
+									</td>
+								</tr>
+							)
+						})}
+					</tbody>
+				</table>
+			:
+			<div>
+				<h3>There is no data inserted yet.</h3>
+				<h5>Please add some data</h5>
+			</div>
+			}
 		</div>
 	)
 }

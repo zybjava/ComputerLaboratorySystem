@@ -33,7 +33,7 @@ class SQL_Computers{
 		})
 	}
 	getComputers(res, obj){
-		let id = obj.id
+		let id = obj.id 
 		let order = obj.orderby
 		let orderby = " ORDER BY uselessID"
 		if(order != undefined && order != "")
@@ -54,20 +54,21 @@ class SQL_Computers{
 	updateComputer(res, obj){
 		let columns = []
 		if(obj['computerName'] != undefined)
-			columns.push(`computerName = ${obj['computerName']}`)
-		if(obj['$monitorID'] != undefined)
-			columns.push(`monitorID = ${obj['monitorID']}`)
-		if(obj['$roomName'] != undefined)
-			columns.push(`roomName = ${obj['roomName']}`)
-		if(obj['$departmentID'] != undefined)
-			columns.push(`departmentID = ${obj['departmentID']}`)
+			columns.push(`computerName = '${obj['computerName']}'`)
+		if(obj['monitorID'] != undefined)
+			columns.push(`monitorID = '${obj['monitorID']}'`)
+		if(obj['roomName'] != undefined)
+			columns.push(`roomName = '${obj['roomName']}'`)
+		if(obj['departmentID'] != undefined)
+			columns.push(`departmentID = '${obj['departmentID']}'`)
 		let column = columns.join(", ")
+		console.log(column)
 		this.db.serialize(() => {
-			this.db.run(`UPDATE computers SET ${column} WHERE ID = ?`, obj.id)
+			this.db.run("UPDATE computers SET " + column + " WHERE computerID = ?", obj['computerID'])
 		})
 		res.send(JSON.stringify({
 			"success": true,
-			"message": "A data updated successfullyZ"
+			"message": "A data updated successfully"
 		}))
 	}
 	deleteComputer(res, id){
