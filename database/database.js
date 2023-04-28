@@ -15,6 +15,7 @@ class SQL_Computers{
 			)`)
 		})
 	}
+	
 	addComputer(res, obj){
 		this.db.serialize(() => {
 			this.db.run("INSERT INTO computers (computerID, computerName, monitorID, roomName, departmentID) VALUES ($computerID, $computerName, $monitorID, $roomName, $departmentID)", obj, (e) => {
@@ -32,6 +33,7 @@ class SQL_Computers{
 			})
 		})
 	}
+
 	getComputers(res, obj){
 		let id = obj.id 
 		let order = obj.orderby
@@ -51,6 +53,7 @@ class SQL_Computers{
 			})
 		}
 	}
+
 	updateComputer(res, obj){
 		let columns = []
 		if(obj['computerName'] != undefined)
@@ -62,7 +65,6 @@ class SQL_Computers{
 		if(obj['departmentID'] != undefined)
 			columns.push(`departmentID = '${obj['departmentID']}'`)
 		let column = columns.join(", ")
-		console.log(column)
 		this.db.serialize(() => {
 			this.db.run("UPDATE computers SET " + column + " WHERE computerID = ?", obj['computerID'])
 		})
@@ -71,6 +73,7 @@ class SQL_Computers{
 			"message": "A data updated successfully"
 		}))
 	}
+
 	deleteComputer(res, id){
 		try{
 			this.db.run("DELETE FROM Computers WHERE computerID = ?", id)
