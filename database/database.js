@@ -6,7 +6,8 @@ class SQL_Computers{
 		this.db = database
 		this.db.serialize(() => {
 			this.db.run(`CREATE TABLE IF NOT EXISTS computers (
-				computerID VARCHAR(100) NOT NULL PRIMARY KEY UNIQUE,
+				uselessID INTEGER PRIMARY KEY ,
+				computerID VARCHAR(100) NOT NULL UNIQUE,
 				computerName VARCHAR(100) NOT NULL,
 				monitorID VARCHAR(100) NOT NULL,
 				roomName VARCHAR(100) NOT NULL,
@@ -19,7 +20,7 @@ class SQL_Computers{
 			this.db.run("INSERT INTO computers (computerID, computerName, monitorID, roomName, departmentID) VALUES ($computerID, $computerName, $monitorID, $roomName, $departmentID)", obj, (e) => {
 				if(e){
 					res.send(JSON.stringify({
-						success: true,
+						success: false,
 						message: "Error occured, might be the ID is already existed"
 					}))
 				}else{
@@ -34,7 +35,7 @@ class SQL_Computers{
 	getComputers(res, obj){
 		let id = obj.id
 		let order = obj.orderby
-		let orderby = " ORDER BY computerID"
+		let orderby = " ORDER BY uselessID"
 		if(order != undefined && order != "")
 			orderby = " ORDER BY " + order
 		if(id == undefined){

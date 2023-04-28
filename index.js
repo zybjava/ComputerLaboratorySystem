@@ -12,6 +12,42 @@ app.use(cors())
 app.use(body.json())
 
 app.post('/add-new-computer-api', (req, res) => {
+	const computerID = /COMPUTER_ID_([\d]+)/gi
+	const computerName = /PC_([\d]+)/gi
+	const monitorID = /MONITOR_([\w]+)/gi
+	const roomName = /(ROOM_|)([\w]+)/gi
+	const departmentID = /([\w]_DEPT)/gi
+	
+	if(!computerID.test(req.body['$computerID']))
+		return res.send(JSON.stringify({
+			success: false,
+			message: "Invalid Computer ID"
+		}))
+	
+	else if(!computerName.test(req.body['$computerName']))
+		return res.send(JSON.stringify({
+			success: false,
+			message: "Invalid Computer Name"
+		}))
+	
+	else if(!monitorID.test(req.body['$monitorID']))
+		return res.send(JSON.stringify({
+			success: false,
+			message: "Invalid Monitor ID"
+		}))
+	
+	else if(!roomName.test(req.body['$roomName']))
+		return res.send(JSON.stringify({
+			success: false,
+			message: "Invalid Roon Name"
+		}))
+	
+	else if(!departmentID.test(req.body['$departmentID']))
+		return res.send(JSON.stringify({
+			success: false,
+			message: "Invalid Department ID"
+		}))
+	
 	let sql = new SQL_Computers()
 	sql.addComputer(res, req.body)
 })
