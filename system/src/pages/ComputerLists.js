@@ -15,17 +15,19 @@ export default function ComputerLists() {
 	const UpdateDesign = {
 		backgroundColor: "#255025aa",
 		color: "#00ff00",
-		padding: "0.25em 0.75em",
-		borderRadius: "1em",
-		border: "1px #00ff00 solid"
+		border: "1px #00ff00 solid",
+		textShadow: "2px 2px 3px #000000",
+		textAlign: "center",
+		cursor: "pointer"
 	}
 
 	const DeleteDesign = {
 		backgroundColor: "#605050",
 		color: "#ff0000",
-		padding: "0.25em 0.75em",
-		borderRadius: "1em",
-		border: "1px #ff0000 solid"
+		border: "1px #ff0000 solid",
+		textShadow: "2px 2px 3px #000000",
+		textAlign: "center",
+		cursor: "pointrt"
 	}
 
 
@@ -111,13 +113,11 @@ export default function ComputerLists() {
 									<td contentEditable="true" id={"monitorID_" + r.computerID}>{r.monitorID}</td>
 									<td contentEditable="true" id={"roomName_" + r.computerID}>{r.roomName}</td>
 									<td contentEditable="true" id={"departmentID_" + r.computerID}>{r.departmentID}</td>
-									<td>
-										<input type="button" style={UpdateDesign} onClick={() => UpdateData({
+									<td  style={UpdateDesign} onClick={() => UpdateData({
 											computerID: r.computerID
-										})} value="Update" />
+										})}>Update
 									</td>
-									<td>
-										<input type="button" style={DeleteDesign} onClick={() => DeleteData(r.computerID)} value="Delete" />
+									<td style={DeleteDesign} onClick={() => DeleteData(r.computerID)}>Delete
 									</td>
 								</tr>
 								: ""

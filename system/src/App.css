@@ -44,6 +44,10 @@
 	margin-top: 1em;
 }
 
+.App-main > table > tbody > tr > td{
+	cursor: text;
+}
+
 .App-main > table > tbody > tr > th,
 .App-main > table > tbody > tr > td{
 	padding: 0.25em;
