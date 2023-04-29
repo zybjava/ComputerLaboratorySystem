@@ -79,7 +79,6 @@
 	width: 100%;
 }
 
-
 .Class-table > tbody > tr > th, .Class-table > tbody > tr > td{
 	user-select: none;
 	border: 1px #000000 solid;
@@ -133,6 +132,10 @@
 	box-sizing: border-box;
 	-ms-box-sizing: border-box;
 	-moz-box-sizing: border-box;
+}
+
+input:focus{
+	background-color: transparent;
 }
 
 @keyframes App-logo-spin {
