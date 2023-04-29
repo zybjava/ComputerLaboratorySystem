@@ -31,7 +31,7 @@ export default function ComputerLists() {
 		border: "1px #ff0000 solid",
 		textShadow: "2px 2px 3px #000000",
 		textAlign: "center",
-		cursor: "pointrt"
+		cursor: "pointer"
 	}
 
 	const OrderBy = (p) => {
@@ -53,6 +53,9 @@ export default function ComputerLists() {
 				return r.json()
 			}).then(r => {
 				alert(r.message)
+				axios.get(`http://localhost:8080/?order=${order}`).then(r => {
+					setData(r.data)
+				})
 			})
 		}
 	}
@@ -81,6 +84,9 @@ export default function ComputerLists() {
 			return r.json()
 		}).then(r => {
 			alert(r.message)
+			axios.get(`http://localhost:8080/?order=${order}`).then(r => {
+				setData(r.data)
+			})
 		})
 	}
 
