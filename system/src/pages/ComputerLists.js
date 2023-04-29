@@ -88,7 +88,7 @@ export default function ComputerLists() {
 		setFilter(event.target.textContent)
 	}
 
-	if(ReactSession.get("username") === undefined){
+	if(ReactSession.get("administrator") === undefined){
 		return (
 			<div className="App-main">
 				<h3>This can be access by the IT Faculty or Administrator</h3>
@@ -99,7 +99,7 @@ export default function ComputerLists() {
 	return (
 		<div className='App-main'>
 			{(data.length > 0) ?
-				<table className='Class-table'>
+				<table className='Class-table' border="1">
 					<caption>
 						<h3>Computer Lists</h3>
 					</caption>

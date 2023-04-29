@@ -38,7 +38,7 @@ export default function ComputerForm(){
 	ReactSession.setStoreType("localStorage")
 	
 	useEffect(() => {
-		if(ReactSession.get("username")){
+		if(ReactSession.get("administrator")){
 			document.getElementById("computerID").value = "COMPUTER_ID_"
 			document.getElementById("computerName").value = "PC_"
 			document.getElementById("monitorID").value = "MONITOR_ID_"
@@ -47,7 +47,7 @@ export default function ComputerForm(){
 		}
 	})
 
-	if(ReactSession.get("username") === undefined){
+	if(ReactSession.get("administrator") === undefined){
 		return (
 			<div className="App-main">
 				<h3>This can be access by the IT Faculty or Administrator</h3>
