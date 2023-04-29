@@ -1,26 +1,30 @@
 import React from 'react';
 import { ReactSession } from 'react-client-session';
+import axios from 'axios'
 
 export default function PanelForAdmin(){
 	let usr = {}
 	const proceed = (event) => {
-		const userLists = {
-			"username": "password"
-		}
-		alert(JSON.stringify(usr))
-		if(userLists[usr.adminUser] === undefined){
-			alert("UserID or password doesn't found")
-		}else if(userLists[usr.adminUser] === usr.adminPassword){
-			ReactSession.setStoreType("localStorage")
-			ReactSession.set("administrator", usr.adminUser)
-		}else{
-			alert("UserID or passowrd doesn't found")
-		}
+		axios.post('http://localhost:8080/userLists', usr).then(r => {
+			if(r.data.success){
+				ReactSession.setStoreType("localStorage")
+				ReactSession.set("administrator", usr.adminUser)
+				window.location.href = "/computer-lists"
+			}else{
+				alert(r.data.message)
+			}
+		})
 	}
 
 	const modify = (event) => {
 		usr[event.target.name] = event.target.value
 	}
+	
+	ReactSession.setStoreType("localStorage")
+	if(ReactSession.get("administrator") !== undefined){
+		window.location.href = "/computer-lists"
+	}
+
 	return (
 		<div>
 			<form onSubmit={proceed}>

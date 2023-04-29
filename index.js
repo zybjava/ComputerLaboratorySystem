@@ -2,6 +2,7 @@ const { SQL_Computers } = require("./database/database")
 const express = require("express")
 const body = require("body-parser")
 const cors = require("cors")
+const fs = require('fs')
 
 const app = express()
 const parser = body.urlencoded({ extended: false })
@@ -121,6 +122,31 @@ app.get('/', (req, res) => {
 		orderby: req.query.order
 	}
 	sql.getComputers(res, obj)
+})
+
+app.post('/userLists', (req, res) => {
+	console.log(req.body)
+	const adminUser = req.body.adminUser
+	const adminPassword = req.body.adminPassword
+	const data = JSON.parse(fs.readFileSync('datas.json', 'utf8'))
+	let result = {}
+	if(data[adminUser] == undefined){
+		result = {
+			success: false,
+			message: "UserID or password doesn't found"
+		}
+	}else if(data[adminUser] === adminPassword){
+		result = {
+			success: true,
+			message: "You're now qualified"
+		}
+	}else{
+		result = {
+			success: false,
+			message: "UserID or password doesn't found 1"
+		}
+	}
+	res.send(JSON.stringify(result))
 })
 
 app.listen(PORT, () => {
