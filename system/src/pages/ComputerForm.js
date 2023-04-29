@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { ReactSession } from 'react-client-session'
 
 export default function ComputerForm(){
 	let state = {
@@ -34,13 +35,26 @@ export default function ComputerForm(){
 		})
 		event.preventDefault()
 	}
+	ReactSession.setStoreType("localStorage")
+	
 	useEffect(() => {
-		document.getElementById("computerID").value = "COMPUTER_ID_"
-		document.getElementById("computerName").value = "PC_"
-		document.getElementById("monitorID").value = "MONITOR_ID_"
-		document.getElementById("roomName").value = "CL1"
-		document.getElementById("departmentID").value = "BSIT_DEPT"
+		if(ReactSession.get("username")){
+			document.getElementById("computerID").value = "COMPUTER_ID_"
+			document.getElementById("computerName").value = "PC_"
+			document.getElementById("monitorID").value = "MONITOR_ID_"
+			document.getElementById("roomName").value = "CL1"
+			document.getElementById("departmentID").value = "BSIT_DEPT"
+		}
 	})
+
+	if(ReactSession.get("username") === undefined){
+		return (
+			<div className="App-main">
+				<h3>This can be access by the IT Faculty or Administrator</h3>
+			</div>
+		)
+	}
+
 	return (
 		<div className="App-main">
 			<main>

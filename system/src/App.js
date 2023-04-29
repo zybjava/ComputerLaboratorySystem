@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import ComputerForm from './pages/ComputerForm'
 import ComputerLists from './pages/ComputerLists';
+import PanelForAdmin from './pages/PanelForAdmins';
 import Navigation from './utils/Navigation';
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
 function Main(){
 	return (
 		<div className='App-main'>
-			<h3>Only School admins are required to access this</h3>
+			<PanelForAdmin />
 		</div>
 	)
 }

@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react'
+import { ReactSession } from 'react-client-session'
 import axios from 'axios'
 
 export default function ComputerLists() {
 	const [data, setData] = useState([])
 	const [filter, setFilter] = useState("")
 	let order = "uselessID"
+	ReactSession.setStoreType("localStorage")
 
 	useEffect(() => {
-		axios.get(`http://localhost:8080/?order=${order}`).then(r => {
-			setData(r.data)
-		})
+		if(ReactSession.get("administrator")){
+			axios.get(`http://localhost:8080/?order=${order}`).then(r => {
+				setData(r.data)
+			})
+		}
 	}, [order])
 		
 	const UpdateDesign = {
@@ -29,7 +33,6 @@ export default function ComputerLists() {
 		textAlign: "center",
 		cursor: "pointrt"
 	}
-
 
 	const OrderBy = (p) => {
 		axios.get(`http://localhost:8080/?order=${p}`).then(r => {
@@ -83,6 +86,14 @@ export default function ComputerLists() {
 
 	const FilterData = (event) => {
 		setFilter(event.target.textContent)
+	}
+
+	if(ReactSession.get("username") === undefined){
+		return (
+			<div className="App-main">
+				<h3>This can be access by the IT Faculty or Administrator</h3>
+			</div>
+		)
 	}
 
 	return (

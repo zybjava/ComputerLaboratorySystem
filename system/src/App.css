@@ -1,3 +1,7 @@
+*{
+	outline: none;
+}
+
 .App {
 	background-image: url('resources/bg.jpg');
 	background-size: cover;

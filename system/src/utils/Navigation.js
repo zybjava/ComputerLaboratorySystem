@@ -6,6 +6,7 @@ export default function Navigation(){
 	return (
 		<div className="Nav-main">
 			<h3>Dalubhasaan ng Lungsod ng Lucena</h3>
+			
 			<ul>
 				<li>
 					<Link to='/computer-lists'>Computer Lists</Link>
